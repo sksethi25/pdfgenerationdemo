@@ -1,0 +1,118 @@
+<html>
+<head></head>
+<style>
+.font23{
+   font-size:23px;
+}
+.border1{
+  border:1px solid black;
+}
+.header{
+background-color:grey;
+height:80px;
+line-height:80px;
+padding-left:10px;
+}
+.q-image-head{
+    text-align: center;
+}
+.q-image{
+  height: 200px;
+  width: 300px;
+}
+.a-image{
+  height:50px;
+}
+.partion{
+  border-width: 2px;
+}
+.pad5{
+  padding: 5px;
+}
+.empty{
+  height:30px; 
+  width:100%; 
+  clear:both;"
+}
+.video-box{
+  background: white;
+  border:1px solid black; box-shadow: 0px 3px 5px #888, 0px -3px 5px #888; 
+  text-align: center;
+  color: red;
+  font-weight: bold
+}
+.video-box-type{
+  display:inline-block;
+  vertical-align: middle;
+}
+.video-box-image{
+  display:inline-block; 
+  min-width:50px; 
+  height:50px; 
+  align: center;
+  vertical-align: middle;
+  margin-top: 10px;
+}
+
+</style>
+<body>
+  <div>
+    {% for problem in data %}
+    <div class="pad5 font23 border1">
+      <!-- Question Header -->
+      <div class="header" >
+        {{problem.question.title}}
+      </div>
+      <!-- Question text/description -->
+      <div>
+        <p>
+        {{problem.question.text}}
+        </p>
+        <!-- Question image -->
+        <div class="q-image-head">
+          {% for j in problem.question.images %}
+            <img class='q-image' src={{j}} />
+          {% endfor %}
+        </div>
+      </div>
+      <!-- Spacing -->
+      <div class="empty"></div>
+      <hr class="partion">
+
+      <!-- Answer -->
+      <div>
+        <!-- Answer title -->
+        <div>
+          {{problem.answer.title}}
+        </div>
+
+        <div>
+          <!-- Answer text -->
+          <p>
+            {{problem.answer.text}}
+          </p>
+
+          <!-- Answer image -->
+          <div class="q-image-head">
+            {% for k in problem.answer.images %}
+              <img class='q-image' src={{k}}  />
+            {% endfor %}
+          </div>
+        </div>
+      <!-- Spacing -->
+        <div class="empty"></div>
+
+        <div class="video-box">
+          <div class="video-box-type">{{problem.answer.type}}</div>
+          <div id="qr" class="video-box-image" class="a-image">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iMzJweCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzIgMzI7IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMycHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnIGlkPSJMYXllcl8xIi8+PGcgaWQ9InBsYXlfeDVGX2FsdCI+PHBhdGggZD0iTTE2LDBDNy4xNjQsMCwwLDcuMTY0LDAsMTZzNy4xNjQsMTYsMTYsMTZzMTYtNy4xNjQsMTYtMTZTMjQuODM2LDAsMTYsMHogTTEwLDI0VjhsMTYuMDA4LDhMMTAsMjR6ICAgIiBzdHlsZT0iZmlsbDojNEU0RTUwOyIvPjwvZz48L3N2Zz4=" >
+          </div>
+        </div>
+      </div>
+      <div class="empty"></div>
+    </div>
+    <div class="empty"></div>
+    {% endfor %}
+  </div>
+</body>
+</html>
